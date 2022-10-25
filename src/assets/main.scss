@@ -1,0 +1,249 @@
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap';
+@import 'reset';
+
+:root {
+  --primary: 60, 77, 219;
+  --success: 90, 192, 143;
+  --danger: 250, 99, 34;
+  --warning: 250, 189, 34;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins';
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+header {
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.5rem;
+    color: #888;
+    font-size: 1rem;
+  }
+}
+
+.upload-wrapper {
+  width: 100%;
+
+  .upload-input {
+    width: 100%;
+    min-height: 300px;
+    border: 1px dashed #999;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: .5s border ease;
+
+    &:hover {
+      border: 1px solid #333;
+
+      label {
+        .upload-icon {
+          font-size: 5rem;
+          margin-bottom: 1rem;
+        }
+
+        .upload-text {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    label {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: 1rem;
+      cursor: pointer;
+
+      .upload-icon {
+        font-size: 3rem;
+        transition: .5s font-size ease, .5s margin-bottom ease;
+      }
+
+      .upload-text {
+        transition: .5s font-size ease;
+
+        strong {
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+
+      .limit-text {
+        transition: .5s font-size ease;
+        color: #999;
+      }
+    }
+
+    input[type='file'] {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: blue;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  .list-files {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2rem;
+
+    .file {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: .5rem;
+      box-sizing: border-box;
+      padding: 1rem;
+      position: relative;
+      display: flex;
+      column-gap: 1rem;
+      cursor: pointer;
+      transition: .5s all ease;
+
+      &+.file {
+        margin-top: .75rem;
+      }
+
+      &:hover {
+        border-color: #333;
+        transform: translateY(-.25rem);
+      }
+
+      .file-preview {
+        width: 60px;
+        height: 60px;
+        border-radius: .5rem;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .file-detail {
+        display: flex;
+        flex-direction: column;
+        row-gap: .5rem;
+        flex: 1;
+
+        .file-name {
+          font-weight: bold;
+        }
+
+        .file-size {
+          font-size: .85rem;
+          color: #888;
+        }
+
+        .file-status {
+          .file-status-text {
+            font-size: .85rem;
+            margin-top: .25rem;
+            display: inline-block;
+
+            &.waiting {
+              color: rgb(var(--primary))
+            }
+
+            &.uploading {
+              color: rgb(var(--warning))
+            }
+
+            &.uploaded {
+              color: rgb(var(--success))
+            }
+
+            &.error {
+              color: rgb(var(--danger))
+            }
+          }
+        }
+      }
+
+      .remove-icon {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .upload-footer {
+    width: 100%;
+    border-top: 1px solid #eee;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+  }
+}
+
+.progressbar {
+  width: 100%;
+  height: 6px;
+  background-color: #eee;
+  border-radius: .5rem;
+
+  .bar {
+    width: 0%;
+    height: 6px;
+    background-color: rgb(var(--primary));
+    border-radius: .5rem;
+    transition: .5s width ease;
+  }
+}
+
+.button {
+  padding: .75rem 2rem;
+  border: 1px solid #eee;
+  border-radius: .5rem;
+  text-transform: uppercase;
+  background-color: #fff;
+  cursor: pointer;
+  transition: .5s all ease;
+
+  &.button--primary {
+    background-color: rgb(var(--primary));
+    color: #fff;
+  }
+
+  &.button--danger {
+    &:hover {
+      background-color: rgb(var(--danger));
+      color: #fff;
+    }
+  }
+}
