@@ -4,10 +4,10 @@ import Progressbar from './Progressbar'
 import Button from "./Button"
 
 const PROCESS_STATUSES = {
-  waiting: 'Bekliyor',
-  uploading: 'Yükleniyor',
-  uploaded: 'Yüklendi',
-  error: 'Hata'
+  waiting: 'Waiting',
+  uploading: 'Uploading',
+  uploaded: 'Uploaded',
+  error: 'Error'
 }
 
 const NUpload = () => {
@@ -16,12 +16,12 @@ const NUpload = () => {
 
   const onChangeHandler = event => {
     const newFiles = [...event.target.files].map(file => {
-      return {
-        ...file,
-        preview: URL.createObjectURL(file),
-        uploadedSize: 0,
-        status: 'waiting'
-      };
+
+      file['preview'] = URL.createObjectURL(file)
+      file['uploadedSize'] = 0
+      file['status'] = 'waiting'
+
+      return file;
     })
     setFiles(newFiles)
   }
